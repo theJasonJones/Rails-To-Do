@@ -54,4 +54,42 @@ describe "Creating todo lists"  do
 		visit "/todo_lists"
 		expect(page).to_not have_content("Learn Rails")
 	end
+
+	it "Displays a error when description is blank" do
+		expect(TodoList.count).to eq(0)
+
+		visit "/todo_lists"
+		click_link "New Todo list"
+		expect(page).to have_content("New todo_list")
+
+		#Test with 2 characters when 3 are required
+		fill_in "Title", with: "Learn This"
+		fill_in "Description", with: ""
+		click_button "Create Todo list"
+
+		expect(page).to have_content("error")
+		expect(TodoList.count).to eq(0)
+
+		visit "/todo_lists"
+		expect(page).to_not have_content("Learn This")
+	end
+
+	it "Displays a description error when the description is less than 5 characters" do
+		expect(TodoList.count).to eq(0)
+
+		visit "/todo_lists"
+		click_link "New Todo list"
+		expect(page).to have_content("New todo_list")
+
+		#Test with 4 characters when 5 are required
+		fill_in "Title", with: "Yo, "
+		fill_in "Description", with: "dawg"
+		click_button "Create Todo list"
+
+		expect(page).to have_content("error")
+		expect(TodoList.count).to eq(0)
+
+		visit "/todo_lists"
+		expect(page).to_not have_content("Yo, ")
+	end
 end
