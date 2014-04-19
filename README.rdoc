@@ -1,28 +1,9 @@
-== README
+== Rails To-Do
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This was a project I used to familiarize myself with Ruby on Rails. This app, as you probably already guessed, is a to-do list that allows a user to:
 
-Things you may want to cover:
+* Add a to-do item
+* Edit that item
+* Delete that item
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+I developed this app through TDD using Capybara (https://github.com/jnicklas/capybara) and rspec (https://github.com/rspec/rspec). 
